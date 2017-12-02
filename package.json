@@ -1,0 +1,38 @@
+{
+  "name": "msgpack-test-js",
+  "description": "msgpack compatibility test driver",
+  "version": "0.1.0",
+  "author": "@kawanet",
+  "bugs": {
+    "url": "https://github.com/kawanet/msgpack-test-js/issues"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5",
+    "mocha": "^4.0.1",
+    "msgpack": "^1.0.2",
+    "msgpack-lite": "^0.1.26",
+    "msgpack-test-suite": "^0.1.0",
+    "msgpack5": "^3.6.0"
+  },
+  "homepage": "https://github.com/kawanet/msgpack-test-js#readme",
+  "jshintConifg": {
+    "undef": true,
+    "unused": true,
+    "node": true
+  },
+  "keywords": [
+    "msgpack"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawanet/msgpack-test-js.git"
+  },
+  "scripts": {
+    "jshint": "./node_modules/.bin/jshint .",
+    "mocha": "./node_modules/.bin/mocha test",
+    "test": "npm run jshint && npm run mocha"
+  },
+  "typings": "index.d.ts"
+}
