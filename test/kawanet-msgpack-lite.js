@@ -8,19 +8,17 @@ var binary = require("../").Type.binary;
 var TITLE = __filename.split("/").pop();
 
 var INCLUDE_TYPE = {
-  "array": 1,
-  "bignum": 1,
-  "binary": 1,
-  "bool": 1,
-  "map": 1,
-  "nil": 1,
-  "number": 1,
-  "string": 1
+  array: 1,
+  bignum: 1,
+  binary: 1,
+  bool: 1,
+  map: 1,
+  nil: 1,
+  number: 1,
+  string: 1
 };
 
-var EXCLUDE_TYPE = {
-  // nothing
-};
+var EXCLUDE_TYPE = {};
 
 var opt = {codec: msgpack.createCodec({int64: true})};
 
@@ -42,7 +40,7 @@ describe(TITLE, function() {
             var buffer = msgpack.encode(value, opt);
             var matched = exam.matchMsgpack(buffer);
             var hint = binary.stringify(buffer) + " !== " + exam.stringify(0);
-            assert.equal(matched, true, hint);
+            assert(matched, hint);
           });
         });
 
@@ -53,7 +51,7 @@ describe(TITLE, function() {
             var value = msgpack.decode(encoded, opt);
             var matched = exam.matchValue(value);
             var hint = JSON.stringify(value) + " !== " + exam.stringify(firstType);
-            assert.equal(matched, true, hint);
+            assert(matched, hint);
           });
         });
       });
