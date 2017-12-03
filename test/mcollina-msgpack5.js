@@ -25,13 +25,13 @@ var EXCLUDE_TYPE = {
 describe(TITLE, function() {
   var suite = new Suite();
 
-  suite.getAllGroup().forEach(function(group) {
+  suite.getGroups().forEach(function(group) {
     describe(group, function() {
 
-      suite.getAllExam(group).forEach(function(exam) {
+      suite.getExams(group).forEach(function(exam) {
         var firstType = 0;
 
-        exam.getAllType().forEach(function(type) {
+        exam.getTypes().forEach(function(type) {
           var tryIt = INCLUDE_TYPE[type] ? it : it.skip;
           if (INCLUDE_TYPE[type] && !firstType) firstType = type;
 
@@ -44,7 +44,7 @@ describe(TITLE, function() {
           });
         });
 
-        exam.getAllMsgpack().forEach(function(encoded) {
+        exam.getMsgpacks().forEach(function(encoded) {
           var tryIt = firstType && !EXCLUDE_TYPE[encoded[0]] ? it : it.skip;
 
           tryIt("msgpack: " + binary.stringify(encoded), function() {

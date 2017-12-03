@@ -10,9 +10,9 @@ export declare class Suite
 {
 	constructor();
 
-	getAllExam(group: string): Array<Exam>;
+	getExams(group: string): Array<Exam>;
 
-	getAllGroup(): Array<string>;
+	getGroups(): Array<string>;
 }
 
 /**
@@ -23,9 +23,9 @@ export declare class Exam
 {
 	constructor(src: object);
 
-	getAllMsgpack(): Array<Binary>;
+	getMsgpacks(): Array<Binary>;
 
-	getAllType(types?: object): Array<string>;
+	getTypes(types?: object): Array<string>;
 
 	getValue(type: string): any;
 

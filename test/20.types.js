@@ -20,7 +20,7 @@ describe(TITLE, function() {
   var suite = new Suite();
 
   // count all groups
-  var total = suite.getAllGroup().length;
+  var total = suite.getGroups().length;
 
   Object.keys(INCLUDE_TYPE).forEach(function(type) {
     it(type, function() {
@@ -28,9 +28,9 @@ describe(TITLE, function() {
       opt[type] = 1;
 
       // count groups which has exam for specified type
-      var count = suite.getAllGroup().filter(function(group) {
-        return suite.getAllExam(group).filter(function(exam) {
-          return exam.getAllType(opt).length;
+      var count = suite.getGroups().filter(function(group) {
+        return suite.getExams(group).filter(function(exam) {
+          return exam.getTypes(opt).length;
         }).length;
       }).length;
 
