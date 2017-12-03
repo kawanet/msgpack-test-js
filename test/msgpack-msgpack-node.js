@@ -3,7 +3,7 @@
 var assert = require("assert");
 var msgpack = require("msgpack");
 var Suite = require("../").Suite;
-var binary = require("../").Type.binary;
+var U = require("./lib/test-utils");
 
 var TITLE = __filename.split("/").pop();
 
@@ -37,14 +37,14 @@ describe(TITLE, function() {
             var value = exam.getValue(type);
             var buffer = msgpack.pack(value);
             var matched = exam.matchMsgpack(buffer);
-            var hint = binary.stringify(buffer) + " !== " + exam.stringify(0);
+            var hint = U.stringify(buffer) + " !== " + exam.stringify(0);
             assert(matched, hint);
             firstType = type;
           });
         });
 
         exam.getMsgpacks().forEach(function(encoded) {
-          it("msgpack: " + binary.stringify(encoded), function() {
+          it("msgpack: " + U.stringify(encoded), function() {
             if (!firstType || EXCLUDE_TYPE[encoded[0]]) return this.skip();
             var value = msgpack.unpack(encoded);
             var matched = exam.matchValue(value);

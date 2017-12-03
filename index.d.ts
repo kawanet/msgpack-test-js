@@ -33,7 +33,8 @@ export declare class Exam
 
 	matchValue(value: any): boolean;
 
-	stringify(idx: number | string): string;
+	stringify(idx: number): string;
+	stringify(type: string): string;
 }
 
 /**
@@ -56,6 +57,4 @@ export declare class Type
 	compare(a: any, b: any): boolean;
 
 	parse(string: string): boolean;
-
-	stringify(value: any): boolean;
 }
