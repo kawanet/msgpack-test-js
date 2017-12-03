@@ -25,7 +25,7 @@ export declare class Exam
 
 	getAllMsgpack(): Array<Binary>;
 
-	getAllType(): Array<string>;
+	getAllType(types?: object): Array<string>;
 
 	getValue(type: string): any;
 
