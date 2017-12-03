@@ -4,6 +4,62 @@
 
 This provides a driver to run the msgpack compatibility test suite.
 
+### Synopsis
+
+```js
+var assert = require("assert");
+var Suite = require("msgpack-test-js").Suite;
+
+// set 1 for types to run test
+var TEST_TYPES = {
+  array: 1,
+  bignum: 1,
+  binary: 1,
+  bool: 1,
+  map: 1,
+  nil: 1,
+  number: 1,
+  string: 1
+};
+
+describe("msgpack-test-js", function() {
+  var suite = new Suite();
+
+  // loop of groups
+  suite.getGroups().forEach(function(group) {
+    it(group, function() {
+      var skip = true;
+
+      // loop of exams
+      suite.getExams(group).forEach(function(exam) {
+        var count = 0;
+
+        // test for encoding
+        exam.getTypes(TEST_TYPES).forEach(function(type) {
+          var value = exam.getValue(type);
+          var buffer = msgpack.encode(value);
+          assert(exam.matchMsgpack(buffer), exam.stringify(type));
+          count++;
+        });
+
+        // skip when types are not supported with the exam
+        if (!count) return;
+        skip = false;
+
+        // test for decoding
+        exam.getMsgpacks().forEach(function(encoded, idx) {
+          var value = msgpack.decode(encoded);
+          assert(exam.matchValue(value), exam.stringify(idx));
+        });
+      });
+
+      // indicate skip when all exams are skipped
+      if (skip) this.skip();
+    });
+  });
+});
+```
+
 ### Test Suite
 
 - [https://github.com/kawanet/msgpack-test-suite](https://github.com/kawanet/msgpack-test-suite)
