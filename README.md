@@ -25,36 +25,33 @@ var TEST_TYPES = {
 describe("msgpack-test-js", function() {
   var suite = new Suite();
 
-  // loop of groups
+  // get an array of groups
   suite.getGroups().forEach(function(group) {
-    it(group, function() {
-      var skip = true;
 
-      // loop of exams
-      suite.getExams(group).forEach(function(exam) {
-        var count = 0;
+    // get an array of exams
+    suite.getExams(group).forEach(function(exam) {
+      var types = exam.getTypes(TEST_TYPES);
+
+      // skip when types not supported
+      if (!types.length) return;
+
+      var title = types[0] + ": " + exam.stringify(types[0]);
+      it(title, function() {
 
         // test for encoding
-        exam.getTypes(TEST_TYPES).forEach(function(type) {
+        types.forEach(function(type) {
           var value = exam.getValue(type);
-          var buffer = msgpack.encode(value);
+          var buffer = msgpack.encode(value, opt);
           assert(exam.matchMsgpack(buffer), exam.stringify(type));
-          count++;
         });
 
-        // skip when types are not supported with the exam
-        if (!count) return;
-        skip = false;
-
         // test for decoding
-        exam.getMsgpacks().forEach(function(encoded, idx) {
-          var value = msgpack.decode(encoded);
+        var msgpacks = exam.getMsgpacks();
+        msgpacks.forEach(function(encoded, idx) {
+          var value = msgpack.decode(encoded, opt);
           assert(exam.matchValue(value), exam.stringify(idx));
         });
       });
-
-      // indicate skip when all exams are skipped
-      if (skip) this.skip();
     });
   });
 });
