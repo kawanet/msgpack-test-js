@@ -32,22 +32,20 @@ describe(TITLE, function() {
         var firstType = 0;
 
         exam.getTypes().forEach(function(type) {
-          var tryIt = INCLUDE_TYPE[type] ? it : it.skip;
-          if (INCLUDE_TYPE[type] && !firstType) firstType = type;
-
-          tryIt(type + ": " + exam.stringify(type), function() {
+          it(type + ": " + exam.stringify(type), function() {
+            if (!INCLUDE_TYPE[type]) return this.skip();
             var value = exam.getValue(type);
             var buffer = msgpack.pack(value);
             var matched = exam.matchMsgpack(buffer);
             var hint = binary.stringify(buffer) + " !== " + exam.stringify(0);
             assert(matched, hint);
+            firstType = type;
           });
         });
 
         exam.getMsgpacks().forEach(function(encoded) {
-          var tryIt = firstType && !EXCLUDE_TYPE[encoded[0]] ? it : it.skip;
-
-          tryIt("msgpack: " + binary.stringify(encoded), function() {
+          it("msgpack: " + binary.stringify(encoded), function() {
+            if (!firstType || EXCLUDE_TYPE[encoded[0]]) return this.skip();
             var value = msgpack.unpack(encoded);
             var matched = exam.matchValue(value);
             var hint = JSON.stringify(value) + " !== " + exam.stringify(firstType);
