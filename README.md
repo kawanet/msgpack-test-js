@@ -1,5 +1,7 @@
 # msgpack compatibility test driver
 
+[![Build Status](https://travis-ci.org/kawanet/msgpack-test-js.svg?branch=master)](https://travis-ci.org/kawanet/msgpack-test-js)
+
 This provides a driver to run the msgpack compatibility test suite.
 
 ### Test Suite
