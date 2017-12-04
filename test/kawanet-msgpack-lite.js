@@ -2,7 +2,7 @@
 
 var assert = require("assert");
 var msgpack = require("msgpack-lite");
-var Suite = require("../").Suite;
+var Group = require("../").Group;
 var U = require("./lib/test-utils");
 
 var TITLE = __filename.split("/").pop();
@@ -23,12 +23,11 @@ var EXCLUDE_TYPE = {};
 var opt = {codec: msgpack.createCodec({int64: true})};
 
 describe(TITLE, function() {
-  var suite = new Suite();
 
-  suite.getGroups().forEach(function(group) {
-    describe(group, function() {
+  Group.getGroups().forEach(function(group) {
+    describe(group + "", function() {
 
-      suite.getExams(group).forEach(function(exam) {
+      group.getExams().forEach(function(exam) {
         var firstType = 0;
 
         exam.getTypes().forEach(function(type) {

@@ -8,7 +8,7 @@ This provides a driver to run the msgpack compatibility test suite.
 
 ```js
 var assert = require("assert");
-var Suite = require("msgpack-test-js").Suite;
+var Group = require("msgpack-test-js").Group;
 
 // set 1 for types to run test
 var TEST_TYPES = {
@@ -23,13 +23,12 @@ var TEST_TYPES = {
 };
 
 describe("msgpack-test-js", function() {
-  var suite = new Suite();
 
   // get an array of groups
-  suite.getGroups().forEach(function(group) {
+  Group.getGroups().forEach(function(group) {
 
     // get an array of exams
-    suite.getExams(group).forEach(function(exam) {
+    group.getExams().forEach(function(exam) {
       var types = exam.getTypes(TEST_TYPES);
 
       // skip when types not supported

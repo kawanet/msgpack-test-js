@@ -1,7 +1,7 @@
 #!/usr/bin/env mocha -R spec
 
 var assert = require("assert");
-var Suite = require("../").Suite;
+var Group = require("../").Group;
 
 var TITLE = __filename.split("/").pop();
 
@@ -17,10 +17,9 @@ var INCLUDE_TYPE = {
 };
 
 describe(TITLE, function() {
-  var suite = new Suite();
 
   // count all groups
-  var total = suite.getGroups().length;
+  var total = Group.getGroups().length;
 
   Object.keys(INCLUDE_TYPE).forEach(function(type) {
     it(type, function() {
@@ -28,8 +27,8 @@ describe(TITLE, function() {
       opt[type] = 1;
 
       // count groups which has exam for specified type
-      var count = suite.getGroups().filter(function(group) {
-        return suite.getExams(group).filter(function(exam) {
+      var count = Group.getGroups().filter(function(group) {
+        return group.getExams().filter(function(exam) {
           return exam.getTypes(opt).length;
         }).length;
       }).length;

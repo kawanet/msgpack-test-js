@@ -3,16 +3,16 @@
 type Binary = Buffer | Uint8Array;
 
 /**
- * Suite hosts all examinations.
+ * Group hosts all examinations.
  */
 
-export declare class Suite
+export declare class Group
 {
 	constructor();
 
-	getExams(group: string): Array<Exam>;
+	static getGroups(): Array<Group>;
 
-	getGroups(): Array<string>;
+	getExams(): Array<Exam>;
 }
 
 /**
