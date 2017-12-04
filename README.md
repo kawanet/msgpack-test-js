@@ -7,8 +7,11 @@ This provides a driver to run the msgpack compatibility test suite.
 ### Synopsis
 
 ```js
+#!/usr/bin/env mocha -R spec
+
 var assert = require("assert");
-var Group = require("msgpack-test-js").Group;
+var Exam = require("msgpack-test-js").Exam;
+var msgpack = require("msgpack-lite");
 
 // set 1 for types to run test
 var TEST_TYPES = {
