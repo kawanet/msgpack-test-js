@@ -45,14 +45,7 @@ export declare class Type
 {
 	constructor();
 
-	static array: Type;
-	static bignum: Type;
-	static binary: Type;
-	static bool: Type;
-	static map: Type;
-	static nil: Type;
-	static number: Type;
-	static string: Type;
+	static getType(type: string): Type;
 
 	compare(a: any, b: any): boolean;
 
