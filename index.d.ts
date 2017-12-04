@@ -13,6 +13,8 @@ export declare class Group
 	static getGroups(): Array<Group>;
 
 	getExams(): Array<Exam>;
+
+	toString(): string;
 }
 
 /**
@@ -50,4 +52,6 @@ export declare class Type
 	compare(a: any, b: any): boolean;
 
 	parse(string: string): boolean;
+
+	toString(): string;
 }
