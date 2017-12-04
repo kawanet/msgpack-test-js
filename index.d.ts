@@ -12,7 +12,7 @@ export declare class Group
 
 	static getGroups(): Array<Group>;
 
-	getExams(): Array<Exam>;
+	getExams(filter?: object): Array<Exam>;
 
 	toString(): string;
 }
@@ -25,9 +25,11 @@ export declare class Exam
 {
 	constructor(src: object);
 
+	static getExams(filter?: object): Array<Exam>;
+
 	getMsgpacks(): Array<Binary>;
 
-	getTypes(types?: object): Array<string>;
+	getTypes(filter?: object): Array<Type>;
 
 	getValue(type: string): any;
 
