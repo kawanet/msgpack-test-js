@@ -22,34 +22,29 @@ var TEST_TYPES = {
   string: 1
 };
 
-describe("msgpack-test-js", function() {
+describe("msgpack-test-suite", function() {
 
-  // get an array of groups
-  Group.getGroups().forEach(function(group) {
+  // find exams for types supported by the library
+  Exam.getExams(TEST_TYPES).forEach(function(exam) {
 
-    // get an array of exams
-    group.getExams().forEach(function(exam) {
-      var types = exam.getTypes(TEST_TYPES);
+    // find types tested by the exam
+    var types = exam.getTypes(TEST_TYPES);
+    var first = types[0];
+    var title = first + ": " + exam.stringify(first);
+    it(title, function() {
 
-      // skip when types not supported
-      if (!types.length) return;
+      // test for encoding
+      types.forEach(function(type) {
+        var value = exam.getValue(type);
+        var buffer = msgpack.encode(value, opt);
+        assert(exam.matchMsgpack(buffer), exam.stringify(type));
+      });
 
-      var title = types[0] + ": " + exam.stringify(types[0]);
-      it(title, function() {
-
-        // test for encoding
-        types.forEach(function(type) {
-          var value = exam.getValue(type);
-          var buffer = msgpack.encode(value, opt);
-          assert(exam.matchMsgpack(buffer), exam.stringify(type));
-        });
-
-        // test for decoding
-        var msgpacks = exam.getMsgpacks();
-        msgpacks.forEach(function(encoded, idx) {
-          var value = msgpack.decode(encoded, opt);
-          assert(exam.matchValue(value), exam.stringify(idx));
-        });
+      // test for decoding
+      var msgpacks = exam.getMsgpacks();
+      msgpacks.forEach(function(encoded, idx) {
+        var value = msgpack.decode(encoded, opt);
+        assert(exam.matchValue(value), exam.stringify(idx));
       });
     });
   });
