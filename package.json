@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "int64-buffer": "^0.1.10",
-    "msgpack-test-suite": "^0.1.0"
+    "msgpack-test-suite": "^0.1.1",
+    "timestamp-nano": "^0.1.3"
   },
   "devDependencies": {
     "jshint": "^2.9.5",

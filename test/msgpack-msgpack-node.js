@@ -15,7 +15,8 @@ var INCLUDE_TYPE = {
   map: 1,
   nil: 1,
   number: 1,
-  string: 1
+  string: 1,
+  timestamp: 0 // ext type -1 not supported
 };
 
 var EXCLUDE_TYPE = {
@@ -25,7 +26,7 @@ var EXCLUDE_TYPE = {
 describe(TITLE, function() {
 
   Group.getGroups().forEach(function(group) {
-    describe(group+":", function() {
+    describe(group + ":", function() {
 
       group.getExams().forEach(function(exam) {
         var firstType = 0;

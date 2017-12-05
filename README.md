@@ -22,7 +22,8 @@ var TEST_TYPES = {
   map: 1,
   nil: 1,
   number: 1,
-  string: 1
+  string: 1,
+  timestamp: 0
 };
 
 describe("msgpack-test-suite", function() {

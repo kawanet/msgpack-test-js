@@ -10,12 +10,13 @@ var TITLE = __filename.split("/").pop();
 var INCLUDE_TYPE = {
   array: 1,
   bignum: 1,
-  U: 1,
+  binary: 1,
   bool: 1,
   map: 1,
   nil: 1,
   number: 1,
-  string: 1
+  string: 1,
+  timestamp: 0 // ext type -1 not supported
 };
 
 var EXCLUDE_TYPE = {};
