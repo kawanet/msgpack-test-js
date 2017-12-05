@@ -29,8 +29,8 @@ describe(TITLE, function() {
     assert.equal(Exam().getMsgpacks().length, 0, "should be empty");
   });
 
-  it("exam.stringify()", function() {
-    assert.equal(Exam().stringify(), "{}");
+  it("exam.getValue()", function() {
+    assert.equal(Exam({number: 1}).getValue("number"), 1);
   });
 
   it("bignum.parse()", function() {

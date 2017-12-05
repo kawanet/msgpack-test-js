@@ -31,14 +31,14 @@ export declare class Exam
 
 	getTypes(filter?: object): Array<Type>;
 
-	getValue(type: string): any;
+	getValue(type: Type | string): any;
 
 	matchMsgpack(encoded: Binary): boolean;
 
 	matchValue(value: any): boolean;
 
 	stringify(idx: number): string;
-	stringify(type: string): string;
+	stringify(type: Type | string): string;
 }
 
 /**
