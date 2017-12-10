@@ -40,14 +40,14 @@ describe("msgpack-test-suite", function() {
       // test for encoding
       types.forEach(function(type) {
         var value = exam.getValue(type);
-        var buffer = msgpack.encode(value, opt);
+        var buffer = msgpack.encode(value);
         assert(exam.matchMsgpack(buffer), exam.stringify(type));
       });
 
       // test for decoding
       var msgpacks = exam.getMsgpacks();
       msgpacks.forEach(function(encoded, idx) {
-        var value = msgpack.decode(encoded, opt);
+        var value = msgpack.decode(encoded);
         assert(exam.matchValue(value), exam.stringify(idx));
       });
     });
