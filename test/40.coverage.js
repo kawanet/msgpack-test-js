@@ -49,4 +49,13 @@ describe(TITLE, function() {
     assert(!map.compare(a, c));
     assert(!map.compare(a, d));
   });
+
+  it("exam.getMsgpack()", function() {
+    var exams = Exam.getExams({ext: 1});
+    assert(exams.length);
+    var ext = Type.getType("ext");
+    var buffer = exams[0].getValue(ext);
+    assert(ext.compare(buffer, buffer));
+    assert(!ext.compare(buffer, null));
+  });
 });

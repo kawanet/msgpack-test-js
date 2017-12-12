@@ -8,10 +8,13 @@
   },
   "dependencies": {
     "int64-buffer": "^0.1.10",
+    "msg-interface": "github:kawanet/msg-interface",
     "msgpack-test-suite": "github:kawanet/msgpack-test-suite",
     "timestamp-nano": "^0.1.3"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.58",
     "jshint": "^2.9.5",
     "mocha": "^4.0.1",
     "msgpack": "^1.0.2",
@@ -40,5 +43,5 @@
     "test": "npm run jshint && npm run mocha",
     "zuul": "./node_modules/.bin/zuul --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
   },
-  "typings": "index.d.ts"
+  "typings": "typings/msgpack-test-js.d.ts"
 }

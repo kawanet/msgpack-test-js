@@ -23,7 +23,6 @@ describe(TITLE, function() {
         var str = ts.toString();
         assert(!check[ts], "each Timestamp should be unique");
         check[str] = 1;
-
       });
     });
   });
