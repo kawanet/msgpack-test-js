@@ -7,7 +7,7 @@
     "url": "https://github.com/kawanet/msgpack-test-js/issues"
   },
   "dependencies": {
-    "int64-buffer": "^0.1.10",
+    "msg-int64": "github:kawanet/msg-int64",
     "msg-interface": "github:kawanet/msg-interface",
     "msg-timestamp": "github:kawanet/msg-timestamp",
     "msgpack-test-suite": "github:kawanet/msgpack-test-suite"
