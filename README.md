@@ -1,6 +1,6 @@
 # msgpack compatibility test driver
 
-[![npm version](https://badge.fury.io/js/msgpack-test-js.svg)](https://badge.fury.io/js/msgpack-test-js) [![Build Status](https://travis-ci.org/kawanet/msgpack-test-js.svg?branch=master)](https://travis-ci.org/kawanet/msgpack-test-js)
+[![npm version](https://badge.fury.io/js/msgpack-test-js.svg)](https://badge.fury.io/js/msgpack-test-js) [![Build Status](https://travis-ci.org/kawanet/msgpack-test-js.svg?branch=master)](https://travis-ci.org/kawanet/msgpack-test-js) [![Coverage Status](https://coveralls.io/repos/github/kawanet/msgpack-test-js/badge.svg)](https://coveralls.io/github/kawanet/msgpack-test-js)
 
 This provides a driver to run the msgpack compatibility test suite.
 
