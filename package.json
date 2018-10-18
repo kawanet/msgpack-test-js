@@ -1,17 +1,16 @@
 {
   "name": "msgpack-test-js",
   "description": "msgpack compatibility test driver",
-  "version": "0.99.1019",
+  "version": "1.0.0",
   "author": "@kawanet",
   "bugs": {
     "url": "https://github.com/kawanet/msgpack-test-js/issues"
   },
   "dependencies": {
-    "msg-ext": "github:kawanet/msg-ext",
-    "msg-int64": "github:kawanet/msg-int64",
-    "msg-interface": "github:kawanet/msg-interface",
-    "msg-timestamp": "github:kawanet/msg-timestamp",
-    "msgpack-test-suite": "github:kawanet/msgpack-test-suite"
+    "msg-ext": "^1.0.0",
+    "msg-int64": "^0.1.0",
+    "msg-timestamp": "^1.0.0",
+    "msgpack-test-suite": "^1.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
