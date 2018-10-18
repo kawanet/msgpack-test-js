@@ -12,6 +12,7 @@ var INCLUDE_TYPE = {
   bignum: 1,
   binary: 1,
   bool: 1,
+  ext: 1,
   map: 1,
   nil: 1,
   number: 1,

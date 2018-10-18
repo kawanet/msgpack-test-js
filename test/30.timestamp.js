@@ -2,7 +2,7 @@
 
 var assert = require("assert");
 var Exam = require("../").Exam;
-var Timestamp = require("timestamp-nano");
+var MsgTimestamp = require("msg-timestamp").MsgTimestamp;
 
 var TITLE = __filename.split("/").pop();
 
@@ -17,13 +17,12 @@ describe(TITLE, function() {
     exam.getTypes(INCLUDE_TYPE).forEach(function(type) {
       it(exam.stringify(type), function() {
 
-        var ts = exam.getValue(type);
-        assert(ts instanceof Timestamp, "it should be a Timestamp");
+        var msg = exam.getValue(type);
+        assert(msg instanceof MsgTimestamp, "it should be a Timestamp");
 
-        var str = ts.toString();
-        assert(!check[ts], "each Timestamp should be unique");
+        var str = msg.toString();
+        assert(!check[msg], "each Timestamp should be unique");
         check[str] = 1;
-
       });
     });
   });

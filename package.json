@@ -1,23 +1,25 @@
 {
   "name": "msgpack-test-js",
   "description": "msgpack compatibility test driver",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "author": "@kawanet",
   "bugs": {
     "url": "https://github.com/kawanet/msgpack-test-js/issues"
   },
   "dependencies": {
-    "int64-buffer": "^0.1.10",
-    "msgpack-test-suite": "^0.1.1",
-    "timestamp-nano": "^0.1.3"
+    "msg-ext": "^1.0.0",
+    "msg-int64": "^0.1.0",
+    "msg-timestamp": "^1.0.0",
+    "msgpack-test-suite": "^1.0.0"
   },
   "devDependencies": {
-    "jshint": "^2.9.5",
-    "mocha": "^4.0.1",
-    "msgpack": "^1.0.2",
+    "coveralls": "^3.0.2",
+    "jshint": "^2.9.6",
+    "mocha": "^5.2.0",
     "msgpack-lite": "^0.1.26",
-    "msgpack5": "^3.6.0",
-    "zuul": "^3.11.1"
+    "msgpack5": "^4.2.1",
+    "nyc": "^13.1.0",
+    "zuul": "^3.12.0"
   },
   "homepage": "https://github.com/kawanet/msgpack-test-js#readme",
   "jshintConifg": {
@@ -35,10 +37,12 @@
     "url": "git+https://github.com/kawanet/msgpack-test-js.git"
   },
   "scripts": {
+    "coveralls": "./node_modules/.bin/nyc npm run mocha && ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
+    "fixpack": "fixpack",
     "jshint": "./node_modules/.bin/jshint .",
     "mocha": "./node_modules/.bin/mocha test",
     "test": "npm run jshint && npm run mocha",
-    "zuul": "./node_modules/.bin/zuul --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
+    "zuul-local": "./node_modules/.bin/zuul --open --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
   },
-  "typings": "index.d.ts"
+  "typings": "typings/msgpack-test-js.d.ts"
 }

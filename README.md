@@ -1,6 +1,6 @@
 # msgpack compatibility test driver
 
-[![npm version](https://badge.fury.io/js/msgpack-test-js.svg)](https://badge.fury.io/js/msgpack-test-js) [![Build Status](https://travis-ci.org/kawanet/msgpack-test-js.svg?branch=master)](https://travis-ci.org/kawanet/msgpack-test-js)
+[![npm version](https://badge.fury.io/js/msgpack-test-js.svg)](https://badge.fury.io/js/msgpack-test-js) [![Build Status](https://travis-ci.org/kawanet/msgpack-test-js.svg?branch=master)](https://travis-ci.org/kawanet/msgpack-test-js) [![Coverage Status](https://coveralls.io/repos/github/kawanet/msgpack-test-js/badge.svg)](https://coveralls.io/github/kawanet/msgpack-test-js)
 
 This provides a driver to run the msgpack compatibility test suite.
 
@@ -40,14 +40,14 @@ describe("msgpack-test-suite", function() {
       // test for encoding
       types.forEach(function(type) {
         var value = exam.getValue(type);
-        var buffer = msgpack.encode(value, opt);
+        var buffer = msgpack.encode(value);
         assert(exam.matchMsgpack(buffer), exam.stringify(type));
       });
 
       // test for decoding
       var msgpacks = exam.getMsgpacks();
       msgpacks.forEach(function(encoded, idx) {
-        var value = msgpack.decode(encoded, opt);
+        var value = msgpack.decode(encoded);
         assert(exam.matchValue(value), exam.stringify(idx));
       });
     });
@@ -65,7 +65,7 @@ describe("msgpack-test-suite", function() {
 
 ### The MIT License (MIT)
 
-Copyright (c) 2017 Yusuke Kawasaki
+Copyright (c) 2017-2018 Yusuke Kawasaki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

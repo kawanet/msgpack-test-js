@@ -3,5 +3,6 @@
 .Thumbs
 ._*
 .idea
+.nyc_output
 node_modules
 npm-debug.log*
