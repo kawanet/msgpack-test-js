@@ -13,15 +13,12 @@
     "msgpack-test-suite": "github:kawanet/msgpack-test-suite"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.4",
-    "@types/node": "^10.5.2",
     "coveralls": "^3.0.2",
-    "jshint": "^2.9.5",
+    "jshint": "^2.9.6",
     "mocha": "^5.2.0",
-    "msgpack": "^1.0.2",
     "msgpack-lite": "^0.1.26",
-    "msgpack5": "^4.2.0",
-    "nyc": "^12.0.2",
+    "msgpack5": "^4.2.1",
+    "nyc": "^13.1.0",
     "zuul": "^3.12.0"
   },
   "homepage": "https://github.com/kawanet/msgpack-test-js#readme",
@@ -45,7 +42,6 @@
     "jshint": "./node_modules/.bin/jshint .",
     "mocha": "./node_modules/.bin/mocha test",
     "test": "npm run jshint && npm run mocha",
-    "tsc-watch": "./node_modules/.bin/tsc --watch",
     "zuul": "./node_modules/.bin/zuul --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
   },
   "typings": "typings/msgpack-test-js.d.ts"
