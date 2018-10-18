@@ -1,12 +1,13 @@
 {
   "name": "msgpack-test-js",
   "description": "msgpack compatibility test driver",
-  "version": "0.99.714",
+  "version": "0.99.1019",
   "author": "@kawanet",
   "bugs": {
     "url": "https://github.com/kawanet/msgpack-test-js/issues"
   },
   "dependencies": {
+    "msg-ext": "github:kawanet/msg-ext",
     "msg-int64": "github:kawanet/msg-int64",
     "msg-interface": "github:kawanet/msg-interface",
     "msg-timestamp": "github:kawanet/msg-timestamp",
@@ -42,7 +43,7 @@
     "jshint": "./node_modules/.bin/jshint .",
     "mocha": "./node_modules/.bin/mocha test",
     "test": "npm run jshint && npm run mocha",
-    "zuul": "./node_modules/.bin/zuul --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
+    "zuul-local": "./node_modules/.bin/zuul --open --ui mocha-bdd --local 4000 -- test/[0-9k]*.js"
   },
   "typings": "typings/msgpack-test-js.d.ts"
 }
